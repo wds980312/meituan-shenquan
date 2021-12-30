@@ -608,6 +608,30 @@ def pushPlus():
             print(e.code)
         if hasattr(e,"reason"):
             print(e,"reason") 
+          
+#定义pushPlus企微的消息推送函数
+def pushPlusQW():
+    global pushPlusToken,webhook,a
+    message = a._buff
+    pushurl="https://www.pushplus.plus/send"
+    head_server ={"Host": "www.pushplus.plus","User-Agent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Mobile Safari/537.36","content-type":"application/x-www-form-urlencoded"}
+    print("**开始执行pushPlusQW推送脚本:**\n")
+    datas=bytes(urllib.parse.urlencode({"title":"天天神券推送","content":message,"token":pushPlusToken,"template":"markdown","channel":"webhook","webhook":str(webhook),"callbackUrl":""}),encoding="UTF-8")
+    request =urllib.request.Request(pushurl,headers=head_server,data=datas,method="POST")
+    try:
+        response = urllib.request.urlopen(request,timeout=30)
+        result = response.read().decode("utf-8")
+        result2 = json.loads(result)
+        if(result2["code"]==200) :
+            print("pushPlusQW消息推送成功!\n\n")
+        else:
+            print("请求接口失效或参数异常，建议重置参数!\n")
+    except  urllib.error.HTTPError as e:
+        if  hasattr(e,"code"):
+            print("脚本执行失败，错误代码如下:\n")
+            print(e.code)
+        if hasattr(e,"reason"):
+            print(e,"reason") 
 
 #定义server 酱的消息推送函数
 def serverjiang():
@@ -864,6 +888,7 @@ def main():
     sys.stdout = temp
     if(yesornot2 == "y"):
         pushPlus()
+        pushPlusQW()
     else:
         print("您已默认关闭pushPlus推送!若需开启,请手动配置环境变量yesornot2!\n")
 
