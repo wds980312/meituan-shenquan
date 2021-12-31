@@ -763,21 +763,21 @@ def main():
     # token = gettoken()
     # getlatlongitude()
     # getpropId_Coinnumber(token)
-    #a = __Autonomy__()
-    #sys.stdout = a
+    a = __Autonomy__()
+    sys.stdout = a
     print("脚本启动时间:%s\n"%(n_time))  
     batchId = getbatchId()
     ##先去保持每天签到 以获得必中符或者豆子
-    #if expire ==0:
+    if expire ==0:
     # print (yesornot)
      # print (yesornot2)
-        #if yesornot =="y":
-            #serverjiangforexpire()
-        #if yesornot2 =="y":
-           # pushPlusforexpire()
-        #sys.exit(0)
-    #if expire ==2:
-        #sys.exit(0)
+        if yesornot =="y":
+            serverjiangforexpire()
+        if yesornot2 =="y":
+            pushPlusforexpire()
+        sys.exit(0)
+    if expire ==2:
+        sys.exit(0)
 
 
 
