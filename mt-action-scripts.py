@@ -763,8 +763,8 @@ def main():
     # token = gettoken()
     # getlatlongitude()
     # getpropId_Coinnumber(token)
-    # a = __Autonomy__()
-    # sys.stdout = a
+    a = __Autonomy__()
+    sys.stdout = a
     print("脚本启动时间:%s\n"%(n_time))  
     batchId = getbatchId()
     ##先去保持每天签到 以获得必中符或者豆子
